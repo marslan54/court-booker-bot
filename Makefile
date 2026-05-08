@@ -1,4 +1,4 @@
-.PHONY: setup run test lint ci docker-build docker-run
+.PHONY: setup run test test-allure allure-serve lint ci docker-build docker-run
 
 setup:
 	python -m venv .venv
@@ -10,10 +10,16 @@ run:
 test:
 	python -m pytest
 
+test-allure:
+	python -m pytest --alluredir=allure-results --junitxml=test-results.xml
+
+allure-serve:
+	allure serve allure-results
+
 lint:
 	python -m flake8 .
 
-ci: lint test
+ci: lint test-allure
 
 docker-build:
 	docker build -t courtbooker-bot .

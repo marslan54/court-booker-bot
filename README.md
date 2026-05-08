@@ -20,7 +20,8 @@ CourtBooker automates that workflow so users can send a natural-language request
 - Screenshot evidence for success/failure attempts
 - Rich structured logs for local operations and debugging
 - SQLite persistence for booking jobs and statuses
-- GitHub Actions CI (flake8 + pytest + test artifact upload)
+- Allure test reporting for richer test UI and history-ready artifacts
+- GitHub Actions CI (flake8 + pytest + JUnit + Allure artifacts)
 
 ## Architecture
 
@@ -160,6 +161,29 @@ The container persists screenshots/logs/SQLite state in `artifacts/`.
 pytest
 ```
 
+### Allure Reporting (Improved Test UI)
+
+Generate Allure results:
+
+```bash
+pytest --alluredir=allure-results --junitxml=test-results.xml
+```
+
+Open interactive Allure UI locally:
+
+```bash
+allure serve allure-results
+```
+
+PowerShell helper commands:
+
+```powershell
+.\scripts.ps1 -Task test-allure
+.\scripts.ps1 -Task allure-serve
+```
+
+> You need Allure CLI installed on your machine to render the HTML UI (`allure serve`).
+
 Test coverage includes:
 
 - message parsing and date/time extraction
@@ -173,8 +197,8 @@ GitHub Actions workflow at `.github/workflows/ci.yml`:
 - triggers on push/PR to `main`
 - installs Python dependencies and Playwright Chromium
 - runs `flake8`
-- runs `pytest --junitxml=test-results.xml`
-- uploads test results as an artifact
+- runs `pytest --junitxml=test-results.xml --alluredir=allure-results`
+- uploads both JUnit XML and `allure-results` artifacts
 
 ## Tech Decisions
 
