@@ -222,16 +222,3 @@ Direct Telegram Bot API usage (`getUpdates` + `sendMessage`) keeps deployment si
 `utils/captcha_handler.py` includes a dedicated integration seam for 2Captcha or similar providers.  
 If your target site introduces reCAPTCHA/hCaptcha, plug provider API calls into `CaptchaSolver.solve()`.
 
-## Portfolio Notes
-
-To make this repository client-ready:
-
-- keep screenshots from real successful bookings in `artifacts/screenshots/`
-- add a short GIF of Telegram request -> confirmation
-- include a short section in your proposal linking how retry logic handles high-demand slots
-
-## Example Screenshots to Add
-
-- `docs/telegram-request.png` (user booking message and bot confirmation)
-- `docs/booking-success.png` (success state from Playwright run)
-- `docs/booking-failure-retry.png` (failed attempt with retry notification)
