@@ -1,0 +1,7 @@
+apscheduler
+playwright
+python-dotenv
+requests
+rich
+pytest
+flake8

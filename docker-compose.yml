@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  courtbooker:
+    build: .
+    container_name: courtbooker-bot
+    env_file:
+      - .env
+    volumes:
+      - ./artifacts:/app/artifacts
+    restart: unless-stopped
