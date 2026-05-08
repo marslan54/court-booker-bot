@@ -11,7 +11,7 @@ test:
 	python -m pytest
 
 test-allure:
-	python -m pytest --alluredir=allure-results --junitxml=test-results.xml
+	python -m pytest --clean-alluredir --alluredir=allure-results --junitxml=test-results.xml
 
 allure-serve:
 	allure serve allure-results

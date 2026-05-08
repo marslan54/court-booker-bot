@@ -166,7 +166,7 @@ pytest
 Generate Allure results:
 
 ```bash
-pytest --alluredir=allure-results --junitxml=test-results.xml
+pytest --clean-alluredir --alluredir=allure-results --junitxml=test-results.xml
 ```
 
 Open interactive Allure UI locally:

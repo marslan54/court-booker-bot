@@ -13,12 +13,12 @@ switch ($Task) {
     }
     "run" { python main.py }
     "test" { python -m pytest }
-    "test-allure" { python -m pytest --alluredir=allure-results --junitxml=test-results.xml }
+    "test-allure" { python -m pytest --clean-alluredir --alluredir=allure-results --junitxml=test-results.xml }
     "allure-serve" { allure serve allure-results }
     "lint" { python -m flake8 . }
     "ci" {
         python -m flake8 .
-        if ($LASTEXITCODE -eq 0) { python -m pytest --alluredir=allure-results --junitxml=test-results.xml }
+        if ($LASTEXITCODE -eq 0) { python -m pytest --clean-alluredir --alluredir=allure-results --junitxml=test-results.xml }
     }
     "docker-build" { docker build -t courtbooker-bot . }
     "docker-run" { docker compose up --build }
