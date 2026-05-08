@@ -27,6 +27,8 @@ jobs:
         run: flake8 .
 
       - name: Run tests
+        env:
+          PYTHONPATH: ${{ github.workspace }}
         run: pytest --junitxml=test-results.xml
 
       - name: Upload test results
